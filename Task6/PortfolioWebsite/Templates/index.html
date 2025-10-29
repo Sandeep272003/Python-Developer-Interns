@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+    <header>
+        <h1>John Doe</h1>
+        <p>Software Developer | Data Enthusiast | Python Expert</p>
+    </header>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Passionate developer with experience in web and data projects.</p>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <ul>
+            <li>Calculator CLI App</li>
+            <li>To-Do List Manager</li>
+            <li>News Scraper</li>
+            <li>REST API with Flask</li>
+        </ul>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <ul class="messages">
+              {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+        <form method="POST" action="/">
+            <input type="text" name="name" placeholder="Your Name" />
+            <input type="email" name="email" placeholder="Your Email" />
+            <textarea name="message" placeholder="Your Message"></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+</body>
+</html>
